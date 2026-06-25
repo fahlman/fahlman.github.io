@@ -316,6 +316,11 @@
       font-size: 14px;
     }
 
+    .sync-status {
+      display: block;
+      margin-top: 6px;
+    }
+
     @media (max-width: 760px) {
       .page {
         width: min(100% - 28px, 1120px);
@@ -392,8 +397,8 @@
 
     <div class="meta-strip" aria-label="Repository summary">
       <div class="meta-item">
-        <span class="meta-label">Public repos</span>
-        <span class="meta-value">6</span>
+        <span class="meta-label">Listed repos</span>
+        <span class="meta-value" data-project-count>6</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Primary stack</span>
@@ -401,7 +406,7 @@
       </div>
       <div class="meta-item">
         <span class="meta-label">Refreshed</span>
-        <span class="meta-value">June 24, 2026</span>
+        <span class="meta-value" data-refreshed-at>June 25, 2026</span>
       </div>
     </div>
 
@@ -412,7 +417,7 @@
       </div>
 
       <div class="project-grid">
-        <article class="project-card">
+        <article class="project-card" data-repo-card="SwiftRip">
           <div>
             <div class="project-top">
               <h3>SwiftRip</h3>
@@ -422,15 +427,15 @@
           </div>
           <div class="project-foot">
             <div class="facts">
-              <span>Swift</span>
-              <span>GPL-2.0</span>
-              <span>1 open issue</span>
+              <span data-repo-field="language">Swift</span>
+              <span data-repo-field="license">GPL-2.0</span>
+              <span data-repo-field="issues">No open issues</span>
             </div>
             <a class="repo-link" href="https://github.com/fahlman/SwiftRip">View repo</a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-repo-card="HomebrewAssistant">
           <div>
             <div class="project-top">
               <h3>Homebrew Assistant</h3>
@@ -440,9 +445,9 @@
           </div>
           <div class="project-foot">
             <div class="facts">
-              <span>Swift</span>
-              <span>MIT</span>
-              <span>Early development</span>
+              <span data-repo-field="language">Swift</span>
+              <span data-repo-field="license">MIT</span>
+              <span data-repo-field="issues">63 open issues</span>
             </div>
             <a class="repo-link" href="https://github.com/fahlman/HomebrewAssistant">View repo</a>
           </div>
@@ -457,7 +462,7 @@
       </div>
 
       <div class="project-grid">
-        <article class="project-card">
+        <article class="project-card" data-repo-card="HomebrewAssistantRecipes">
           <div>
             <div class="project-top">
               <h3>HomebrewAssistantRecipes</h3>
@@ -469,12 +474,13 @@
             <div class="facts">
               <span>Public</span>
               <span>Main branch</span>
+              <span data-repo-field="issues">No open issues</span>
             </div>
             <a class="repo-link" href="https://github.com/fahlman/HomebrewAssistantRecipes">View repo</a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-repo-card="SwiftRip-Tools">
           <div>
             <div class="project-top">
               <h3>SwiftRip-Tools</h3>
@@ -484,15 +490,15 @@
           </div>
           <div class="project-foot">
             <div class="facts">
-              <span>Shell</span>
-              <span>GPL-2.0</span>
-              <span>1 open issue</span>
+              <span data-repo-field="language">Shell</span>
+              <span data-repo-field="license">GPL-2.0</span>
+              <span data-repo-field="issues">No open issues</span>
             </div>
             <a class="repo-link" href="https://github.com/fahlman/SwiftRip-Tools">View repo</a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-repo-card="SwiftRip-libdvdcss">
           <div>
             <div class="project-top">
               <h3>SwiftRip-libdvdcss</h3>
@@ -502,15 +508,15 @@
           </div>
           <div class="project-foot">
             <div class="facts">
-              <span>C</span>
-              <span>GPL-2.0</span>
-              <span>Default: master</span>
+              <span data-repo-field="language">C</span>
+              <span data-repo-field="license">GPL-2.0</span>
+              <span data-repo-field="issues">No open issues</span>
             </div>
             <a class="repo-link" href="https://github.com/fahlman/SwiftRip-libdvdcss">View repo</a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-repo-card="SwiftRip-HandBrake">
           <div>
             <div class="project-top">
               <h3>SwiftRip-HandBrake</h3>
@@ -520,9 +526,9 @@
           </div>
           <div class="project-foot">
             <div class="facts">
-              <span>C</span>
+              <span data-repo-field="language">C</span>
               <span>Fork</span>
-              <span>HandBrake</span>
+              <span data-repo-field="issues">Issues disabled</span>
             </div>
             <a class="repo-link" href="https://github.com/fahlman/SwiftRip-HandBrake">View repo</a>
           </div>
@@ -532,7 +538,121 @@
   </main>
 
   <footer class="page">
-    <p>Repository metadata was checked against the public GitHub API on June 24, 2026. The live profile is at <a href="https://github.com/fahlman">github.com/fahlman</a>.</p>
+    <p>Repository metadata was checked against the public GitHub API on <span data-refreshed-at>June 25, 2026</span>. The live profile is at <a href="https://github.com/fahlman">github.com/fahlman</a>.<span class="sync-status" data-sync-status>Static fallback metadata is shown until GitHub responds.</span></p>
   </footer>
+  <script>
+    (() => {
+      const owner = "fahlman";
+      const projectNames = [
+        "SwiftRip",
+        "HomebrewAssistant",
+        "HomebrewAssistantRecipes",
+        "SwiftRip-Tools",
+        "SwiftRip-libdvdcss",
+        "SwiftRip-HandBrake"
+      ];
+      const apiUrl = `https://api.github.com/users/${owner}/repos?per_page=100&sort=updated&type=owner`;
+      const dateFormatter = new Intl.DateTimeFormat(undefined, {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      });
+      const timeFormatter = new Intl.DateTimeFormat(undefined, {
+        hour: "numeric",
+        minute: "2-digit"
+      });
+
+      const issueText = (repo) => {
+        if (!repo.has_issues) {
+          return "Issues disabled";
+        }
+
+        const count = repo.open_issues_count;
+        if (count === 0) {
+          return "No open issues";
+        }
+
+        return count === 1 ? "1 open issue" : `${count} open issues`;
+      };
+
+      const licenseText = (repo) => {
+        const license = repo.license?.spdx_id;
+        if (!license || license === "NOASSERTION") {
+          return "";
+        }
+
+        return license;
+      };
+
+      const updateField = (card, field, value) => {
+        if (!value) {
+          return;
+        }
+
+        card.querySelectorAll(`[data-repo-field="${field}"]`).forEach((element) => {
+          element.textContent = value;
+        });
+      };
+
+      const refreshMetadata = async () => {
+        const status = document.querySelector("[data-sync-status]");
+
+        try {
+          if (status) {
+            status.textContent = "Refreshing live metadata...";
+          }
+
+          const response = await fetch(apiUrl, {
+            headers: {
+              Accept: "application/vnd.github+json"
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error(`GitHub API returned ${response.status}`);
+          }
+
+          const repos = await response.json();
+          const repoByName = new Map(repos.map((repo) => [repo.name, repo]));
+          const visibleProjects = projectNames.filter((name) => repoByName.has(name));
+          const refreshed = new Date();
+
+          document.querySelectorAll("[data-project-count]").forEach((element) => {
+            element.textContent = String(visibleProjects.length || projectNames.length);
+          });
+
+          document.querySelectorAll("[data-refreshed-at]").forEach((element) => {
+            element.textContent = dateFormatter.format(refreshed);
+          });
+
+          document.querySelectorAll("[data-repo-card]").forEach((card) => {
+            const repo = repoByName.get(card.dataset.repoCard);
+            if (!repo) {
+              return;
+            }
+
+            updateField(card, "language", repo.language);
+            updateField(card, "license", licenseText(repo));
+            updateField(card, "issues", issueText(repo));
+
+            const link = card.querySelector(".repo-link");
+            if (link && repo.html_url) {
+              link.href = repo.html_url;
+            }
+          });
+
+          if (status) {
+            status.textContent = `Live metadata refreshed at ${timeFormatter.format(refreshed)}.`;
+          }
+        } catch (error) {
+          if (status) {
+            status.textContent = "Static fallback metadata shown; GitHub metadata could not be refreshed.";
+          }
+        }
+      };
+
+      refreshMetadata();
+    })();
+  </script>
 </body>
 </html>
