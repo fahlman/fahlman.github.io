@@ -31,7 +31,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site
-          cp index.html CNAME .nojekyll _site/
+          cp index.html CNAME .nojekyll favicon.ico _site/
           cp -R assets _site/
 
       - name: Upload site
